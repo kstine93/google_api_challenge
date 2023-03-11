@@ -25,8 +25,10 @@ class google_auth:
     to enable later API calls.
     '''
 
+    #credentials stored locally are used for API calls
     creds = None
 
+    #DO I NEED THESE JSON VERSIONS?
     cred_json = {}
     token_json = {}
 
@@ -53,8 +55,15 @@ class google_auth:
         #       i. get_token
         #       
 
+    def get_creds(self):
+        return self.creds
+    
+    def test_creds(self):
+        #Have basic test to confirm with Google that the credentials and the scope match + are ready for usage in API.
+        pass
+
     #---------------
-    def __get_token(self,token_path):
+    def __load_or_refresh_token(self,token_path):
         # if os.path.exists(token_path):
         #     self.creds = Credentials.from_authorized_user_file(token_path, self.scopes)
         # #If there are no (valid) credentials available, let the user log in.
@@ -72,6 +81,7 @@ class google_auth:
 
     #---------------
     def __login_to_google(self):
+        '''Prompt user to login to their GCP account - to re-allocate credentials.'''
         flow = InstalledAppFlow.from_client_secrets_file(
             'credentials.json', self.scopes)
         self.creds = flow.run_local_server(port=0)
@@ -87,3 +97,20 @@ class google_auth:
         #     token.write(creds.to_json())
 
         #2. self.credentials_path = path
+
+
+'''
+Configurable options in this class:
+1. Paths of credentials
+2. Scope of credentials
+
+Things people can do:
+1. Change scope
+2. Get credentials
+3. Test credentials
+
+Things that this class needs to do on its own:
+1. Load in credentials from given path
+2. Prompt user for login if credentials are invalid
+3. Save credentials to given path
+'''

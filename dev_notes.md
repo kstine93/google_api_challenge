@@ -39,6 +39,7 @@ Note that Google requires storing *credential JSONs* as a way of authenticating 
 
 >More resources on Google authentication: https://developers.google.com/workspace/guides/auth-overview
 
+---
 
 ### Architecture:
 
@@ -58,7 +59,20 @@ Some ideas:
   - There are a lot of expansions we could make for the search: https://support.google.com/mail/answer/7190
   - I think a nice but extensible place to start would be to just accept a string using Google's search syntax and just pass that along to Google. This is really basic, but with enough examples (and Google has its own good documentation), this would be the most flexible implementation. We could then wrap this in another layer later which makes the search query for you in a more user-friendly way
 
+---
 
-
-
-
+### Steps
+- [ ] Design BASIC version of my app - so that I can just see where I'll put everything (pseudocode fine)
+  - [ ] google_auth authorisation class (manages connection to Google, re-authentication if sth fails)
+  - [ ] google_api api abstraction class (provides methods to connect to Google API); keeps complexity nicely contained
+  - [ ] quickstart.py (demonstrates how to use classes to do operations mentioned in **GOAL**)
+- [ ] Create GCP + set up authentication
+- [ ] Set up environment (use virtual environment with requirements.txt to allow anyone to download + use the code).
+- [ ] Build out code more
+  - [ ] Build out google_auth with actual code
+  - [ ] Test google_auth (have unit tests)
+  - [ ] Build out google_api with actual code
+  - [ ] Test google_api (have unit tests)
+  - [ ] Build quickstart.py (should be very easy once testing is complete)
+- [ ] Refine documentation:
+  - [ ] Build out README to show how to boot up app + work with GCP

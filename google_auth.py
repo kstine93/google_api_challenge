@@ -25,24 +25,24 @@ class Google_Auth:
     creds = None
 
     # If modifying these scopes, delete the file token.json
-    scopes = ['https://www.googleapis.com/auth/gmail.readonly'
-              ,'https://www.googleapis.com/auth/gmail.insert'
-              ,'https://www.googleapis.com/auth/gmail.compose']
+    scopes = None
 
     cred_path = None
     token_path = None
 
     #---------------
-    def __init__(self,token_path,credentials_path):
+    def __init__(self,token_path: str,credentials_path: str, scopes: list[str]):
 
         #TODO: Figure out if where I want default values for the credentials + tokens to be - or maybe not default values at all.
         self.cred_path = credentials_path
         self.token_path = token_path
+        self.scopes = scopes
 
         if os.path.exists(self.token_path):
             self.creds = Credentials.from_authorized_user_file(self.token_path, self.scopes)
 
-        self.__load_or_refresh_token()
+        if not self.creds or not self.creds.valid:
+            self.load_or_refresh_token()
 
         #Do I need users to send me the credentials_json? That seems silly...
         #Maybe an easier way to configure where the credentials are stored?
@@ -58,14 +58,16 @@ class Google_Auth:
         return self.creds
 
     #---------------
-    def __load_or_refresh_token(self):
-        if not self.creds or not self.creds.valid:
-            if self.creds and self.creds.expired and self.creds.refresh_token:
-                self.__refresh_credentials()
-            else:
-                self.__login_to_google()
-            # Save the credentials for the next run
-            self.__store_credentials_local()
+    def load_or_refresh_token(self):        
+        if self.creds and self.creds.expired and self.creds.refresh_token:
+            self.__refresh_credentials()
+        else:
+            self.__login_to_google()
+        # Save the credentials for the next run
+        self.__store_credentials_local()
+
+    #def append_to_scope(self,new_scopes: list[str]):
+
  
     #---------------
     def __refresh_credentials(self):

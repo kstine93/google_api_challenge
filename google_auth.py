@@ -56,6 +56,10 @@ class Google_Auth:
     #---------------
     def get_creds(self):
         return self.creds
+    
+    #---------------
+    def delete_token_file(self):
+        os.remove(self.token_path)
 
     #---------------
     def load_or_refresh_token(self):        

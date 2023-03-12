@@ -92,17 +92,32 @@ Some ideas:
 ---
 
 ### Steps
-- [ ] Design BASIC version of my app - so that I can just see where I'll put everything (pseudocode fine)
-  - [ ] google_auth authorisation class (manages connection to Google, re-authentication if sth fails)
+- [X] Design BASIC version of my app - so that I can just see where I'll put everything (pseudocode fine)
+  - [X] google_auth authorisation class (manages connection to Google, re-authentication if sth fails)
   - [ ] google_api api abstraction class (provides methods to connect to Google API); keeps complexity nicely contained
   - [ ] quickstart.py (demonstrates how to use classes to do operations mentioned in **GOAL**)
-- [ ] Create GCP + set up authentication
-- [ ] Set up environment (use virtual environment with requirements.txt to allow anyone to download + use the code).
+- [X] Create GCP + set up authentication
+- [X] Set up environment (use virtual environment with requirements.txt to allow anyone to download + use the code).
 - [ ] Build out code more
-  - [ ] Build out google_auth with actual code
+  - [X] Build out google_auth with actual code
   - [ ] Test google_auth (have unit tests)
   - [ ] Build out google_api with actual code
   - [ ] Test google_api (have unit tests)
   - [ ] Build quickstart.py (should be very easy once testing is complete)
 - [ ] Refine documentation:
   - [ ] Build out README to show how to boot up app + work with GCP
+
+
+---
+
+## DEVELOPMENT NOTES
+
+> **Mar. 12, 2023:**
+> I finally got the OAuth working - it's pretty graceful in that Google simply asks for permission the browser- and only once.
+> But the token it gives you is pretty odd - it is monolithic for a specific scope. And any additional scopes will return a 403.
+> TODO:
+> 1. Build out email search functionality
+> 2. Figure out way that Auth class can identify when scope has changed (keep local file which has existing scope?) so that if scope changes, then it automatically tries to reset token - before any issues happen in the API calls.
+> 3. Make unit tests
+> 4. Clean up code + documentation
+> 5. Done!

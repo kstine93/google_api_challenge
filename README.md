@@ -29,3 +29,39 @@ Using the Google API means that you need your own Google Cloud Platform [MORE_HE
 
 ### Step 3: Running this code:
 1. See the 'quickstart.py' script for some examples of how you can use the code (THIS SHOULD HAVE EXAMPLES OF USING CLASSES FOR API NEEDS)
+
+
+
+---
+
+## ROUGH GCP SETUP NOTES (refine later)
+
+### 1. Set up Google Cloud Project
+1. Follow [Google's instructions to set up a Google Cloud Project](https://developers.google.com/workspace/guides/create-project)
+
+### 2. Enable Gmail API for your Google Cloud Project
+1. Follow [Google's instructions to enable Google Workspace APIs](https://developers.google.com/workspace/guides/enable-apis) to locate where you can activate the Gmail API
+2. Once you see the page below, click the 'Gmail API' and then click 'Enable' <br><img src="./media/google-api-library.png" alt="Google API product library" width = 600px;>
+
+---
+
+### 3. Create Service Account
+
+1. After you enable the Gmail API, click the "Create Credentials" button at the top of the screen. If you don't, try navigating to your [Gmail API metrics page](https://console.cloud.google.com/apis/api/gmail.googleapis.com/metrics).
+2. In the following page, select the **Gmail API**, that you are using **Application data**, and that you are **not** using Compute Engine or other Google-managed cloud services (see image below). Click "next".<br><img src="./media/gmail-credential-page.png" alt="Gmail API credentials creation page" width = 400px;>
+3. In the Service Account page, give your service account a name and a description to help you keep track of what it is for. Then click "Create and Continue".
+4. `DO I NEED TO GRANT EXTRA ACCESS TO MY SERVICE ACCOUNT TO ACCESS MY GCP? TEST FIRST AND FINISH THESE NOTES ONCE I KNOW FOR SURE`
+5. Click 'Done' at the bottom of the page and head to [your credentials page](https://console.cloud.google.com/apis/credentials). You should see your new service account.
+
+>[Read more about Google Service Accounts](https://cloud.google.com/iam/docs/service-account-overview)
+
+---
+
+### 4. Create and download key for Service Account
+1. Click your newly created service account from the [Credentials page](https://console.cloud.google.com/apis/credentials).
+2. At the top menu, select "Keys" and then click the 'Add Key' button. Choose the JSON key type.
+3. Your key JSON file will automatically download - store this in a secure location on your machine.
+
+---
+
+### 5. Set up application 

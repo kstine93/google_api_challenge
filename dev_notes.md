@@ -41,6 +41,36 @@ Note that Google requires storing *credential JSONs* as a way of authenticating 
 
 ---
 
+### Google Authentication System
+Google offers multiple systems by which you can authenticate to use Google APIs. These vary in security, capabilities, and complexity to set up.
+
+#### API keys
+API keys are not particularly secure in the scope of authentication options - so we will avoid using them if possible.
+
+[More information on authenticating with Google API keys](https://cloud.google.com/docs/authentication/api-keys)
+
+---
+
+#### Service Accounts
+Service accounts are special accounts owned by applications rather than people. As opposed to OAuth, service accounts can be used by multiple people.
+However, Service accounts are not allowed to access certain APIs that require impersonating a particular user (e.g., the Gmail API) without enabling **"domain-wide delegation"** for the service account - which can only be done with a Google Workspace account - which costs money.
+
+Since this paying option is also beyond our scope, we will not use this option.
+Additionally, there was some indication that Google Workspace APIs (e.g., Gmail,Drive) should not be accessed via Service Accounts anyway, since these resources are deeply tied to individual users - and so user-based authentication is more appropriate.
+
+---
+
+#### OAuth 2.0 Client IDs
+OAuth client IDs allow end users to simply use their Google login credentials as a way to authenticate.
+This appears to be designed mostly for use in user-focused Apps where integration with a user's Google account is necessary (e.g., "login with Google"?).
+There are some options that you need to leave blank (particularly 'scopes') in order to not require a Google review. [This video](https://www.youtube.com/watch?v=IV3PN7IejTg) provides a nice walkthrough.
+
+**This is the authentication method we should use.**
+
+[More OAuth information from Google](https://developers.google.com/workspace/guides/create-credentials#oauth-client-id)
+
+---
+
 ### Architecture:
 
 #### Credential Setup:

@@ -95,7 +95,7 @@ Some ideas:
 - [X] Design BASIC version of my app - so that I can just see where I'll put everything (pseudocode fine)
   - [X] google_auth authorisation class (manages connection to Google, re-authentication if sth fails)
   - [X] google_api api abstraction class (provides methods to connect to Google API); keeps complexity nicely contained
-  - [ ] quickstart.py (demonstrates how to use classes to do operations mentioned in **GOAL**)
+  - [X] quickstart.py (demonstrates how to use classes to do operations mentioned in **GOAL**)
 - [X] Create GCP + set up authentication
 - [X] Set up environment (use virtual environment with requirements.txt to allow anyone to download + use the code).
 - [X] Build out code more
@@ -104,8 +104,8 @@ Some ideas:
   - [X] Build out google_api with actual code
   - [X] Test google_api
   - [X] Build quickstart.py (should be very easy once testing is complete)
-- [ ] Refine documentation:
-  - [ ] Build out README to show how to boot up app + work with GCP
+- [X] Refine documentation:
+  - [X] Build out README to show how to boot up app + work with GCP
 
 
 ---
@@ -116,7 +116,7 @@ Some ideas:
 > I finally got the OAuth working - it's pretty graceful in that Google simply asks for permission the browser- and only once.
 > But the token it gives you is pretty odd - it is monolithic for a specific scope. And any additional scopes will return a 403.
 > TODO:
-> [X] Build out email search functionality
+> 1. Build out email search functionality
 > 2. Figure out way that Auth class can identify when scope has changed (keep local file which has existing scope?) so that if scope changes, then it automatically tries to reset token - before any issues happen in the API calls.
 > 3. Clean up code + documentation
 > 4. Done!

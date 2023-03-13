@@ -35,20 +35,39 @@ Google offers a few ways to authenticate API calls, but for using Gmail specific
 2. Click 'Create Credentials' at the top menu and then select "OAuth client ID"
 3. Select the application type "Desktop app" and then click "Create"
 4. The OAuth client will be created and a pop-up will offer you a chance to download the credentials as a JSON file. Do this and move this file to a secure location on your computer.
+5. *[optional]* Rename this file to "credentials.json" for easier use.
 
 ---
 
 ### Step 4: Setting up this code on your computer
 1. [Download and install Python](https://www.python.org/downloads/) if you haven't already
 2. Clone this Github repository using Git, or download it as a zip file and unpack it in a folder on your computer.
-3. Run startup.sh to install dependencies
-   1. different shell script needed for Windows / Mac machines? I should either provide CMD / Mac terminal scripts or specify manual instructions for these use cases
+3. Run the code snippets below to set up your environment. Note that these code snippets are for **Linux**. To see how to set up a virtual environment on Windows or Mac machines, see the [Python documentation on virtual environments](https://docs.python.org/3/library/venv.html)
 
+
+```
+Setup a Python virtual environment in a folder 'venv' alongside your code:
+>$ python3 -m venv path/to/your/folder/venv
+```
+```
+Activate your Python virtual environment:
+>$ source venv/bin/activate
+```
+```
+Install dependent packages
+(venv)>$ pip install -r requirements.txt
+```
 
 ### Step 3: Running this code:
-1. See the 'quickstart.py' script for some examples of how you can use the code (THIS SHOULD HAVE EXAMPLES OF USING CLASSES FOR API NEEDS)
+If you've completed all of the commands above, you should be ready to go!
+See the 'quickstart.py' script for some examples of how you can use this code. You will need to change a few things (particularly where you are storing your OAuth credentials) for the code to run correctly.
 
 
+### Step 4: Exiting your virtual environment:
+Once you're done using the code, you can exit the environment by using the command below:
+```
+(venv)>$ deactivate
+```
 
 ---
 

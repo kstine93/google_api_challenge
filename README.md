@@ -6,23 +6,41 @@ The instructions below show you how to use this repo more - if you have any ques
 ---
 
 ## What does this code do?
-This code allows you to interact with Gmail just from using a Python script - meaning that you can craft and send emails, as well as search and find past conversations, without having to log into Gmail from your web browser. Exciting!
+This code allows you to interact with Gmail just from using a Python script without having to use Gmail from your web browser. Exciting!
 
-More text here...
+Currently this code only supports the following functionalities, but more may be added in the future:
+- Compose & send emails
+- Search through your Gmail inbox to find specific messages
 
 ---
 
 ## How can I use this code?
-[wip]
 
-### Step 1: Setting up your Google Cloud Platform
-Using the Google API means that you need your own Google Cloud Platform [MORE_HERE]...
-...
-...
+### Step 1: Setting up your Google Cloud Project
+Using the Google API means that you need your own Google Cloud Project.
+This is what allows Google to expose access to parts of your Google account to APIs - and helps you manage authentication.
+You can follow [Google's instructions to set up a Google Cloud Project](https://developers.google.com/workspace/guides/create-project).
 
-### Step 2: Setting up this code on your computer
-1. Get Python
-2. Clone Repo using Git or download and unpack
+---
+
+### Step 2: Enable the Gmail API on your Project
+1. Follow [Google's instructions to enable Google Workspace APIs](https://developers.google.com/workspace/guides/enable-apis) to locate where you can activate the Gmail API
+2. Once you see the page below, click the 'Gmail API' and then click 'Enable' <br><img src="./media/google-api-library.png" alt="Google API product library" width = 600px;>
+
+---
+
+### Step 3: Setting up OAuth authentication
+Google offers a few ways to authenticate API calls, but for using Gmail specifically without a Google Workspace account, OAuth is the best choice (see `devnotes.md` for a discussion of this topic).
+1. In your Project, find the "Credentials" menu within "APIs & Services"<br><img src="./media/api-credentials-menu.png" alt="API Credentials menu" width = 300px;>
+2. Click 'Create Credentials' at the top menu and then select "OAuth client ID"
+3. Select the application type "Desktop app" and then click "Create"
+4. The OAuth client will be created and a pop-up will offer you a chance to download the credentials as a JSON file. Do this and move this file to a secure location on your computer.
+
+---
+
+### Step 4: Setting up this code on your computer
+1. [Download and install Python](https://www.python.org/downloads/) if you haven't already
+2. Clone this Github repository using Git, or download it as a zip file and unpack it in a folder on your computer.
 3. Run startup.sh to install dependencies
    1. different shell script needed for Windows / Mac machines? I should either provide CMD / Mac terminal scripts or specify manual instructions for these use cases
 
@@ -34,34 +52,3 @@ Using the Google API means that you need your own Google Cloud Platform [MORE_HE
 
 ---
 
-## ROUGH GCP SETUP NOTES (refine later)
-
-### 1. Set up Google Cloud Project
-1. Follow [Google's instructions to set up a Google Cloud Project](https://developers.google.com/workspace/guides/create-project)
-
-### 2. Enable Gmail API for your Google Cloud Project
-1. Follow [Google's instructions to enable Google Workspace APIs](https://developers.google.com/workspace/guides/enable-apis) to locate where you can activate the Gmail API
-2. Once you see the page below, click the 'Gmail API' and then click 'Enable' <br><img src="./media/google-api-library.png" alt="Google API product library" width = 600px;>
-
----
-
-### 3. Create Service Account
-
-1. After you enable the Gmail API, click the "Create Credentials" button at the top of the screen. If you don't, try navigating to your [Gmail API metrics page](https://console.cloud.google.com/apis/api/gmail.googleapis.com/metrics).
-2. In the following page, select the **Gmail API**, that you are using **Application data**, and that you are **not** using Compute Engine or other Google-managed cloud services (see image below). Click "next".<br><img src="./media/gmail-credential-page.png" alt="Gmail API credentials creation page" width = 400px;>
-3. In the Service Account page, give your service account a name and a description to help you keep track of what it is for. Then click "Create and Continue".
-4. `DO I NEED TO GRANT EXTRA ACCESS TO MY SERVICE ACCOUNT TO ACCESS MY GCP? TEST FIRST AND FINISH THESE NOTES ONCE I KNOW FOR SURE`
-5. Click 'Done' at the bottom of the page and head to [your credentials page](https://console.cloud.google.com/apis/credentials). You should see your new service account.
-
->[Read more about Google Service Accounts](https://cloud.google.com/iam/docs/service-account-overview)
-
----
-
-### 4. Create and download key for Service Account
-1. Click your newly created service account from the [Credentials page](https://console.cloud.google.com/apis/credentials).
-2. At the top menu, select "Keys" and then click the 'Add Key' button. Choose the JSON key type.
-3. Your key JSON file will automatically download - store this in a secure location on your machine.
-
----
-
-### 5. Set up application 

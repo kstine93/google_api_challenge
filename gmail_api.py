@@ -71,24 +71,3 @@ class Gmail_Api:
         return messages
     
 #---------------
-if __name__ == "__main__":
-    base_dir = "/home/rambino/.gcp"
-
-    #This is probably too many scopes - whittle down once I know what I need:
-    scopes = ['https://www.googleapis.com/auth/gmail.compose'
-              ,'https://www.googleapis.com/auth/gmail.readonly']
-    
-    auth = Google_Auth(token_path=base_dir+"/token.json"
-                    ,credentials_path=base_dir+"/credentials.json"
-                    ,scopes=scopes)
-    
-    t = Gmail_Api(auth)
-
-    # msgs = t.search_email_get_all_messages("from:stinewilcox@gmail.com after:2023/03/05")
-    # print(len(msgs))
-    t.send_email(to=['kstine93+tes@gmail.com']
-                    ,subject="test_sub"
-                    ,body="test this email!!"
-                    ,body_is_html=False
-                    ,cc=[]
-                    )
